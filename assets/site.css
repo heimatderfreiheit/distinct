@@ -58,7 +58,7 @@ img{display:block;max-width:100%}
 .static .wm .d{--g:.055em!important}
 
 /* ---- the sentence, set to the measure of the back print (Thurid's design 1).
-   1em = the size of "Liberty."; the grotesk rows are .68em at 84% width; tops are baseline targets minus each font's ascent. */
+   1em = the size of "Liberty"; the grotesk rows are .68em at 84% width; tops are baseline targets minus each font's ascent. */
 .lock{position:relative;display:block;width:4em;height:3.42em;font-size:var(--u,200px);color:var(--kobalt);margin:0}
 .lock>span{position:absolute;display:block;line-height:1;white-space:nowrap}
 .lock .f{font-family:var(--fr);font-style:italic;font-weight:900;font-variation-settings:'opsz' 144,'SOFT' 100,'WONK' 1;letter-spacing:-.02em}
