@@ -2,7 +2,7 @@
   var root=document.documentElement;
   // ---------- open values (tbd)
   var STRIPE={XS:'',S:'',M:'',L:'',XL:'',XXL:''}; // Stripe Payment Links pro Größe
-  var EN_COMMON={nav_shop:'<span class="nl">Buy Drop 001</span><span class="ns">Buy</span>',nav_about:'About',nav_help:'Questions',privacy:'Privacy',withdraw:'Withdrawal',agb:'Terms',more:'Read the story and buy',buy:'Buy',size:'Size',back:'Back to the start',aria_nav:'Pages',aria_lang:'Language',aria_buy:'Buy',aria_legal:'Legal',aria_md:'More drops',hint_size:'Please choose a size.'};
+  var EN_COMMON={nav_shop:'Drop 001',nav_about:'About',nav_help:'FAQ',privacy:'Privacy',withdraw:'Withdrawal',agb:'Terms',more:'Read the story and order',buy:'Buy',size:'Size',back:'Back to the start',aria_nav:'Pages',aria_lang:'Language',aria_buy:'Buy',aria_legal:'Legal',aria_md:'More drops',hint_size:'Please choose a size.'};
   var EN=Object.assign({},EN_COMMON,window.EN_PAGE||{});
   var DE={}, DEA={}; DE.title=document.title;
   document.querySelectorAll('[data-i18n]').forEach(function(el){ var k=el.getAttribute('data-i18n'); if(!(k in DE)) DE[k]=el.innerHTML; });
@@ -41,8 +41,10 @@
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var wm=document.getElementById('wm');
   if(wm){
-    var dEl=wm.querySelector('.d'), DIST=160, cur=0, tgt=0, last=0, raf=0, isStatic=false;
+    var dEl=wm.querySelector('.d'), DIST=160, GMAX=0.055, cur=0, tgt=0, last=0, raf=0, isStatic=false;
     var edge=wm.closest('.edge'), spine=wm.parentNode;
+    var lage=root.classList.contains('wm-hoch')?'hoch':'titel';
+    if(lage==='titel'){ DIST=320; GMAX=0.085; }   // masthead: whole at the top, then a clearly visible slip over a longer stretch
     var soft=(location.search.match(/[?&]distinct=(hell|kontur|voll)/)||[])[1];
     try{ if(soft) sessionStorage.setItem('distinct-wm',soft); else soft=sessionStorage.getItem('distinct-wm'); }catch(err){}
     if(!soft) soft='kontur';
@@ -54,8 +56,8 @@
       wm.style.setProperty('--q', pin>0?Math.max(0,Math.min(1,window.scrollY/pin)).toFixed(3):'1');
       if(isStatic) return;
       var now=(typeof ts==='number'&&ts>0)?ts:performance.now(); if(!last) last=now; var dt=Math.min(100,Math.max(0,now-last)); last=now;
-      tgt=Math.max(0,Math.min(1,window.scrollY/DIST)); cur+=(tgt-cur)*(1-Math.exp(-dt/90)); if(Math.abs(tgt-cur)<0.001) cur=tgt;
-      dEl.style.setProperty('--g',(0.055*cur*cur*(3-2*cur)).toFixed(4)+'em');
+      tgt=Math.max(0,Math.min(1,window.scrollY/DIST)); cur+=(tgt-cur)*(1-Math.exp(-dt/150)); if(Math.abs(tgt-cur)<0.001) cur=tgt;
+      dEl.style.setProperty('--g',(GMAX*cur*cur*(3-2*cur)).toFixed(4)+'em');
       if(cur!==tgt) raf=requestAnimationFrame(tick);
     }
     function kick(){ if(!raf){ last=0; raf=requestAnimationFrame(tick); } }
