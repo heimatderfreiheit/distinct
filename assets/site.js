@@ -17,6 +17,10 @@
     if(T.title) document.title=T.title;
     root.lang=en?'en':'de';
     document.querySelectorAll('.lang button').forEach(function(b){ b.setAttribute('aria-pressed',String(b.dataset.l===S.lang)); });
+    document.querySelectorAll('.cd[data-until]').forEach(function(el){   // days left until a drop, local midnight
+      var p=el.getAttribute('data-until').split('-'), d=Math.ceil((new Date(+p[0],+p[1]-1,+p[2])-new Date())/864e5);
+      el.textContent = d>1 ? (en?'· '+d+' days to go':'· noch '+d+' Tage') : d===1 ? (en?'· tomorrow':'· morgen') : '';
+    });
   }
   document.querySelectorAll('.lang button').forEach(function(b){ b.addEventListener('click',function(){ S.lang=b.dataset.l; wr('lang',S.lang); applyLang(); }); });
 

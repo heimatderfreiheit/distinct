@@ -114,6 +114,7 @@ img{display:block;max-width:100%}
 }
 .teaser{font-size:clamp(18px,1.5vw,22px);line-height:1.45;max-width:36ch;text-wrap:pretty}
 .teaser p+p{margin-top:.8em}
+.dh{margin-bottom:clamp(12px,1.4vw,20px)}
 .buyline{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 26px;margin-top:clamp(18px,2.2vw,30px)}
 .pr{font-family:var(--any);font-stretch:78%;font-weight:600;font-size:17px}
 .shot{position:relative;display:block;aspect-ratio:1/1;mix-blend-mode:multiply}
@@ -127,7 +128,9 @@ img{display:block;max-width:100%}
 .rail{display:flex;gap:clamp(12px,1.6vw,24px);overflow-x:auto;scroll-snap-type:x proximity;padding:18px var(--gx) 14px 0;background:var(--cream);scrollbar-width:thin;scrollbar-color:var(--kobalt) transparent}
 .card{flex:0 0 min(38vw,460px);margin:0;scroll-snap-align:start}
 .card figcaption{display:flex;justify-content:space-between;gap:12px;margin-top:10px;font-family:var(--any);font-stretch:78%;font-weight:600;font-size:17px}
-.card figcaption span+span{color:var(--muted)}
+.card .cd{color:var(--muted)}
+.card.px .shot{mix-blend-mode:normal}
+.card.px img{image-rendering:pixelated}
 .md .ph{margin-top:8px;padding-right:var(--gx)}
 .qs{padding:clamp(48px,7vw,96px) var(--gx) clamp(40px,6vw,80px)}
 .qs .faq{padding-top:18px}
