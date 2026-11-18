@@ -2,7 +2,7 @@
   var root=document.documentElement;
   // ---------- open values (tbd)
   var STRIPE={XS:'',S:'',M:'',L:'',XL:'',XXL:''}; // Stripe Payment Links pro Größe
-  var EN_COMMON={nav_shop:'Drop 001',nav_about:'About',nav_help:'FAQ',privacy:'Privacy',withdraw:'Withdrawal',agb:'Terms',more:'Read the story and order',buy:'Buy',size:'Size',back:'Back to the start',aria_nav:'Pages',aria_lang:'Language',aria_buy:'Buy',aria_legal:'Legal',aria_md:'More drops',hint_size:'Please choose a size.'};
+  var EN_COMMON={nav_shop:'Drop 001',nav_about:'About',nav_help:'FAQ',privacy:'Privacy',withdraw:'Withdrawal',agb:'Terms',more:'Read the story and order',buy:'Order',size:'Size',back:'Back to the start',aria_nav:'Pages',aria_lang:'Language',aria_buy:'Order',aria_legal:'Legal',aria_md:'More drops',hint_size:'Please choose a size.'};
   var EN=Object.assign({},EN_COMMON,window.EN_PAGE||{});
   var DE={}, DEA={}; DE.title=document.title;
   document.querySelectorAll('[data-i18n]').forEach(function(el){ var k=el.getAttribute('data-i18n'); if(!(k in DE)) DE[k]=el.innerHTML; });
